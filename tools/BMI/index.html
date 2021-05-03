@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="KZ91">
+    
+    <title>
+        
+            BMI计算器 |
+        
+        KZ91
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.2/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"en-US","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Wellcome To My Blog!"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.2"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                KZ91
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class="active"
+                               href="/tools"
+                            >
+                                工具
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/api"
+                            >
+                                API
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class="active"
+                       href="/tools">工具</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/api">API</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="page-template-container">
+        
+        
+        <div class="page-template-content markdown-body">
+            
+                <h2 id="BMI计算器"><a href="#BMI计算器" class="headerlink" title="BMI计算器"></a>BMI计算器</h2><script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<p><audio style="display:none;" src="/Audio/My_Audio/AWAKEN.mp3" preload="preload" controls="controls" loop="loop" autoplay="autoplay"></audio></p>
+<style>
+  .sg_input{    
+    font-size: 30px;
+    width: 100%;
+    height: 100px;
+    text-align:center;
+    /*border-radius: 5px;*/
+    /*background: rgba(255,255,255,0.1);*/
+    /*background-color: rgba(0, 0, 0, 0);// 透明背景*/
+    border: 0;  // 去除未选中状态边框
+    outline: none; // 去除选中状态边框
+    -webkit-transition-duration: 1s; /* Safari浏览器的动效 */
+    transition-duration: 1s; /* 其他浏览器的动效 */
+    outline: rgba(68, 207, 246, 1) solid 0px;
+    border: none;
+    border-bottom: 1px solid #3C3C3C;
+}
+.sg_input:focus{    
+ border-radius: 10px;
+ background-color: #ffffff;
+ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);    
+ border: center;
+ border-bottom: 0px solid #ffffff;
+ outline: center;
+}
+  .tz_input{    
+    font-size: 30px;
+    width: 100%;
+    height: 100px;
+    text-align:center;
+    border: 0;  // 去除未选中状态边框
+    outline: none; // 去除选中状态边框
+    -webkit-transition-duration: 1s; /* Safari浏览器的动效 */
+    transition-duration: 1s; /* 其他浏览器的动效 */
+    outline: rgba(68, 207, 246, 1) solid 0px;
+    border: none;
+    border-bottom: 1px solid #3C3C3C;
+}
+ /*focus*/
+.tz_input:focus{    
+ border-radius: 10px;
+ background-color: #ffffff;
+ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);    
+ border: center;
+ border-bottom: 0px solid #ffffff;
+ outline: center;
+}.go{
+    cursor:pointer;
+    border-radius: 10px;
+    display: block;
+    color: black;
+    height: 15%;
+    width: 100%;
+    text-align:center;
+    font-size: 55px;
+    line-height: 100px;
+    background-size: 400%;
+    -webkit-transition-duration: 1s; /* Safari */
+    transition-duration: 1s;
+    background-image: url(http://p17.qhimg.com/bdm/0_0_100/t0137c07edde1ae810e.jpg);
+    color: #ffffff;
+}
+.go:hover{    
+ background-image: url(http://p17.qhimg.com/bdm/0_0_100/t0137c07edde1ae810e.jpg);
+ color: #ffffff;
+ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);    
+}
+</style>                
+<script>
+function go_fun(){
+var sg_value = document.getElementById('sg').value
+var tz_value = document.getElementById('tz').value
+var sg_value_value = sg_value * sg_value
+var value = tz_value / sg_value_value
+value = value.toFixed(1)
+if (value <= 0.0)
+{
+    alert('错误！BMI值为0\n请检查 身高单位是不是“米”? 体重单位是不是“千克”? 是否填写完整? 身高、体重是否是真实的？')
+    $('#result').text('检测失败！')
+}
+else if (value == 'NaN')
+{
+    alert('错误！BMI值为NaN,请将参数填写完整！！')
+    $('#result').text('检测失败！')
+}
+else if (18.5 > value)
+{
+    alert('您目前的状态是：偏瘦\nBMI值：' + value)
+    $('#result').text('您目前的状态是：偏瘦 | BMI值为：' + value)
+}
+else if (value > 18.5 && value < 23.9)
+{
+    alert('您目前的状态是：正常\nBMI值：' + value)
+    $('#result').text('您目前的状态是：正常 | BMI值为：' + value)
+}
+else if (value == 24)
+{
+    alert('您目前的状态是：超重\nBMI值：' + value)
+    $('#result').text('您目前的状态是：超重 | BMI值为：' + value)
+}
+else if (value > 24.1 && value < 26.9)
+{
+    alert('您目前的状态是：偏胖\nBMI值：' + value)
+    $('#result').text('您目前的状态是：偏胖 | BMI值为：' + value)
+}
+else if (value > 27 && value < 29.9)
+{
+    alert('您目前的状态是：肥胖\nBMI值：' + value)    
+    $('#result').text('您目前的状态是：肥胖 | BMI值为：' + value)
+}
+else if (value >= 30 )
+{
+    alert('您目前的状态是：严重肥胖\nBMI值：' + value)
+    $('#result').text('您目前的状态是：严重肥胖 | BMI值为：' + value)
+}
+else
+{
+    alert('计算失败您可能没有填数值（请注意单位！）也有可能是bug\nBMI值：' + value)
+    $('#result').text('检测失败！')
+}
+}
+</script>
+<script>
+// Enter事件
+$(document).keyup(function(event){
+ if(event.keyCode ==13){
+  go_fun()
+ }
+});
+// Up事件
+$(document).keyup(function(event){
+ if(event.keyCode ==38){
+  $('#sg').focus()
+ }
+}); 
+// Down事件
+$(document).keyup(function(event){
+ if(event.keyCode ==40){
+  $('#tz').focus()
+ }
+}); 
+</script><input class='sg_input' id='sg' placeholder='请输入身高（米）' id='sg'></input><div><input style='visibility:hidden;'></div><input class='tz_input' id='tz' placeholder='请输入体重（千克）' id='tz'></input></div><div><input style='visibility:hidden;'></div><a class='go' onclick='go_fun()'>计算</a>
+
+<div><input style='visibility:hidden;'></div>
+
+<hr>
+<div><input style='visibility:hidden;'></div>
+<div id='result' >您目前的状态是：无数据 | BMI值是：无数据</div>
+<div><input style='visibility:hidden;'></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">状态</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">偏瘦：</td>
+<td>&lt;18.5</td>
+</tr>
+<tr>
+<td align="left">正常：</td>
+<td>18.5～23.9</td>
+</tr>
+<tr>
+<td align="left">超重：</td>
+<td>≥24</td>
+</tr>
+<tr>
+<td align="left">偏胖：</td>
+<td>24～26.9</td>
+</tr>
+<tr>
+<td align="left">肥胖：</td>
+<td>27～29.9</td>
+</tr>
+<tr>
+<td align="left">重度肥胖：</td>
+<td>≥30</td>
+</tr>
+</tbody></table>
+
+            
+        </div>
+        <div class="page-template-comments">
+            
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'vDaIalhYsrYnwKA12tmsfuVB-MdYXbMMI',
+                    appKey: 'Y27NjBinKxmG5fEFn5nYvpiQ',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '尽情吐槽吧~ 😉',
+                    lang: 'en-US'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'KZ91';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">KZ91</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.2</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.2/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.2/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.2/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.2/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.2/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.2/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.2/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.2/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.2/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

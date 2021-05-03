@@ -1,0 +1,96 @@
+function url(id){
+    $.ajax({
+        url : '/Download/list.json',
+        type : 'GET',
+        dataType : 'text',
+        async : true,
+        success :function(data){
+            data = JSON.parse(data)
+            var json_data = data.filter(function(data){
+                return data.id == id
+            });
+            var get_id = JSON.stringify(json_data)
+            console.log(get_id)
+        }
+    })
+}
+
+================================================================================
+================================================================================
+
+
+/*
+//判断是什么浏览器（无版本控制）
+function Browser() {
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+    var isOpera = userAgent.indexOf("Opera") > -1;
+    if (isOpera) {
+        return "Opera"
+    }; //判断是否Opera浏览器
+    if (userAgent.indexOf("Firefox") > -1) {
+        return "FF";
+    } //判断是否Firefox浏览器
+    if (userAgent.indexOf("Chrome") > -1) {
+        return "Chrome";
+    }
+    if (userAgent.indexOf("Safari") > -1) {
+        return "Safari";
+    } //判断是否Safari浏览器
+    if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+        return "IE";
+    }; //判断是否IE浏览器
+}
+
+function downloadFile_CAF(url,name){
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = name;
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
+
+function downloadFile_O(url) {   
+    try{ 
+        var elemIF = document.createElement("iframe");  
+        elemIF.src = url;   
+        elemIF.style.display = "none";   
+        document.body.appendChild(elemIF);   
+    }catch(e){ 
+        alert('文件自动下载失败，请手动下载！')
+    } 
+}
+*/
+
+
+================================================================================
+================================================================================
+
+
+/*if (Browser() == 'Chrome'){
+    downloadFile_CAF(file_info.url, file_info.name)
+    console.log('Chrome');
+}
+else if (Browser() == 'FF'){
+    downloadFile_CAF(file_info.url, file_info.name)
+    console.log('Firefox');
+}
+else if(Browser() == 'IE'){
+    alert('您的浏览器是 Internet Explorer，所以不能完美兼容自动下载功能（可能会下载失败，需要手动下载）')
+    downloadFile_O(file_info.url)
+    console.log('IE');
+}
+else if (Browser() == 'Opera'){
+    alert('您的浏览器是 Opera，所以不能完美兼容自动下载功能（可能会下载失败，需要手动下载）')
+    downloadFile_O(file_info.url)
+    console.log('Opera');
+}
+else if (Browser() == 'Safari'){
+    alert('您的浏览器是 Safari，所以不能完美兼容自动下载功能（可能会下载失败，需要手动下载）')
+    downloadFile_O(file_info.url)
+    console.log('Safari');
+}
+else{
+    alert('您使用的是 未知 内核的浏览器，所以不能完美兼容自动下载功能（可能会下载失败，需要手动下载）')
+    downloadFile_O(file_info.url)
+    console.log('None');
+}*/
